@@ -1,4 +1,4 @@
-#customer details for Bank account
+#customer details for Bank account of customer
 from database import*
 class Customer:
     def __init__(self,username,password,name,age,city,account_number):
