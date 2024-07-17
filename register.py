@@ -1,4 +1,4 @@
-#Users Registration SignUp and SignIn
+#Users Registration SignUp and SignIn form
 import random
 from bank import*
 from database import *
