@@ -1,6 +1,7 @@
 #Bank services 
 from database import*
 import datetime
+#main bank class
 class Bank:
 
     def __init__(self,username,account_number):
@@ -13,10 +14,11 @@ class Bank:
                 f"account_number INTEGER,"
                 f"remarks VARCHAR(30),"
                 f"amount INTEGER)")
+    #to check balance in bank account
     def balanceequiry(self):
         temp = db_query(f"SELECT balance FROM customers WHERE username = '{self.__username}';")
         print(f"{self.__username} Balance is {temp[0][0]} \n")
-
+    #for deposit 
     def deposit(self, amount):
         temp = db_query(f"SELECT balance FROM customers WHERE username = '{self.__username}';")
         test = amount + temp[0][0]
@@ -29,7 +31,7 @@ class Bank:
                  f"'{amount}'"
                  f")")
         print(f"{self.__username} Amount is Sucessfully Depositted into Your Account {self.__account_number} \n")
-
+    #for withrawal
     def withdraw(self, amount):
         temp = db_query(f"SELECT balance FROM customers WHERE username = '{self.__username}';")
         if amount > temp[0][0]:
@@ -45,7 +47,7 @@ class Bank:
                      f"'{amount}'"
                      f")")
             print(f"{self.__username} Amount is Sucessfully Withdraw from Your Account {self.__account_number} \n")
-
+    #to transfer fund
     def fundtransfer(self, receive, amount):
         temp = db_query(f"SELECT balance FROM customers WHERE username = '{self.__username}';")
         if amount > temp[0][0]:
